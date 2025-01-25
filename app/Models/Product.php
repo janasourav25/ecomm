@@ -1,10 +1,45 @@
 <?php
 
+// namespace App\Models;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Model;
+// use App\Models\Brand;
+// use App\Models\Category; 
+// use App\Models\OrderItems;
+// use App\Models\ProductVariant;
+
+// class Product extends Model
+// {
+//     use HasFactory;
+
+//     protected $fillable = ['category_id', 'brand_id','name','slug','short_description',
+//     'default_images','description','status','featured'];
+//     protected $cast = [
+//         'default_images' => 'array',
+//     ];
+
+//     public function category(){
+//         return $this->belongsTo(Category::class);
+//     }
+
+//     public function brand(){
+//         return $this->belongsTo(Brand::class);
+//     }
+
+//     public function orderItems(){
+//         return $this->hasMany(OrderItems::class);
+//     }
+
+//     public function productVariant(){
+//         return $this->hasMany(ProductVariant::class);
+//     }
+// }
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Brand;
-use App\Models\Category; 
+// use App\Models\Product;
+use App\Models\Category;
 use App\Models\OrderItems;
 use App\Models\ProductVariant;
 
@@ -12,25 +47,39 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['category_id', 'brand_id','name','slug','short_description',
-    'default_images','description','status','featured'];
-    protected $cast = [
+    protected $fillable = [
+        'category_id',
+        'brand_id',
+        'name',
+        'slug',
+        'short_description',
+        'default_images',
+        'description',
+        'status',
+        'featured'
+    ];
+
+    protected $casts = [
         'default_images' => 'array',
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function brand(){
+    public function brand()
+    {
         return $this->belongsTo(Brand::class);
     }
 
-    public function orderItems(){
+    public function orderItems()
+    {
         return $this->hasMany(OrderItems::class);
     }
 
-    public function productVariant(){
+    public function variants()
+    {
         return $this->hasMany(ProductVariant::class);
     }
 }
