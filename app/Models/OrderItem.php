@@ -19,7 +19,9 @@ class OrderItem extends Model
         return $this->belongsTo(Product::class);
     } 
 
-    public function productVariant(){
-        return $this->belongsTo(ProductVariant::class);
-    } 
+     // Change productVariant to variant to match your Filament form
+     public function variant()
+     {
+         return $this->belongsTo(ProductVariant::class, 'product_variant_id');
+     }
 }
